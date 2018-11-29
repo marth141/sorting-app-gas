@@ -1,0 +1,31 @@
+<script type="text/babel">
+  class Sorter extends React.Component {
+    constructor() {
+      super();
+      this.state = {
+        originalSortList: "",
+        finalSortList: "",
+        comparisonLeft: "",
+        comparisonRight: ""
+      }
+      this.setOriginalSortList = this.setOriginalSortList.bind(this);
+    }
+
+    componentDidMount() {
+      google.script.run.withSuccessHandler(this.setOriginalSortList).getOriginalPriorityList();
+    }
+
+    setOriginalSortList(value) {
+      console.log(value);
+      this.setState({originalSortList: value});
+    }
+
+    render () {
+      return (
+        <div>
+          <OriginalList list={this.state.originalSortList} />
+        </div>
+      );
+    }
+  }
+</script>
