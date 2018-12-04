@@ -3,27 +3,28 @@ class OriginalList extends React.Component {
   constructor() {
     super();
     this.state = {
-      originalList: ""
     };
 
     this.setOriginalList = this.setOriginalList.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.list !== prevProps.list) {
-      this.setOriginalList(this.props.lists)
-    }
+  componentDidMount() {
+    console.log(this.props);
+  }
+
+  componentDidUpdate() {
+    console.log(this.props);
   }
 
   setOriginalList(list) {
-    this.setState({originalList: list})
+    this.setState({list})
   }
 
   render() {
     return (
       <div>
         <h1>Original List</h1>
-        <ul>{originalList}</ul>
+        <p>{ this.props.list }</p>
       </div>
     );
   }
