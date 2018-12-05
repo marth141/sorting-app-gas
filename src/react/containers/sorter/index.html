@@ -39,7 +39,10 @@
           <ComparisonLeft leftValue={this.state.comparisonLeft} />
           <ComparisonRight rightValue={this.state.comparisonRight} />
           <SortedList list={this.state.finalSortList} />
-          <Question />
+          <Question comparisons={ {
+            this.state.comparisonLeft,
+            this.state.comparisonRight
+          } } />
         </div>
       );
     }
