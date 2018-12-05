@@ -6,36 +6,39 @@
         originalSortList: "",
         finalSortList: "",
         comparisonLeft: "",
-        comparisonRight: ""
-      }
+        comparisonRight: "",
+        indexLeft: 0,
+        indexRight: 1
+      };
       this.setOriginalSortList = this.setOriginalSortList.bind(this);
-      this.setComparisonLeft = this.setComparisonLeft.bind(this);
-      this.setComparisonRight = this.setComparisonRight.bind(this);
     }
 
     componentDidMount() {
-      google.script.run.withSuccessHandler(this.setOriginalSortList).getOriginalPriorityList();
+      google.script.run
+        .withSuccessHandler(this.setOriginalSortList)
+        .getOriginalPriorityList();
+    }
+
+    componentDidUpdate() {
+      console.log("=== State Update ===");
+      console.log(this.state);
     }
 
     setOriginalSortList(value) {
-      this.setState({originalSortList: value}, this.setComparisonLeft(value), this.setComparisonRight(value));
-
+      this.setState({
+        originalSortList: value,
+        comparisonLeft: value[this.state.indexLeft],
+        comparisonRight: value[this.state.indexRight]
+      });
     }
 
-    setComparisonLeft(value) {
-      console.log('value@Left');
-      console.log(value);
-    }
-
-    setComparisonRight(value) {
-      console.log('value@Right');
-      console.log(value);
-    }
-
-    render () {
+    render() {
       return (
         <div>
           <OriginalList list={this.state.originalSortList} />
+          <ComparisonLeft leftValue={this.state.comparisonLeft} />
+          <ComparisonRight rightValue={this.state.comparisonRight} />
+          <SortedList list={this.state.finalSortList} />
         </div>
       );
     }
