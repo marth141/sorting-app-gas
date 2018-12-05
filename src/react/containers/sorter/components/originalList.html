@@ -1,32 +1,12 @@
 <script type="text/babel">
-class OriginalList extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-    };
-
-    this.setOriginalList = this.setOriginalList.bind(this);
+  class OriginalList extends React.Component {
+    render() {
+      return (
+        <div>
+          <h1>Original List</h1>
+          <p>{this.props.list}</p>
+        </div>
+      );
+    }
   }
-
-  componentDidMount() {
-    // console.log(this.props);
-  }
-
-  componentDidUpdate() {
-    // console.log(this.props);
-  }
-
-  setOriginalList(list) {
-    this.setState({list})
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Original List</h1>
-        <p>{ this.props.list }</p>
-      </div>
-    );
-  }
-}
 </script>
