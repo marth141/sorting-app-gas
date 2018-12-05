@@ -1,6 +1,7 @@
 <script type="text/babel">
   class Question extends React.Component {
     componentDidUpdate() {
+      console.log('=== question props ===')
       console.log(this.props);
     }
 
@@ -8,7 +9,7 @@
       return (
         <div>
           <h1>Question</h1>
-          <p>Is blank more important than blank?</p>
+          <p>Is {this.props.comparisons.left} more important than {this.props.comparisons.right}?</p>
         </div>
       );
     }
